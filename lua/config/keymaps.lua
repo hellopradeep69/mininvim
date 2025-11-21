@@ -7,6 +7,9 @@ vim.keymap.set("i", "jj", "<esc>", {})
 -- Ex
 vim.keymap.set("n", "<leader>e", "<cmd>Lex<cr>", {})
 
+-- Ex | oil
+-- vim.keymap.set("n", "<leader>E", "<cmd>Oil<cr>", {})
+
 -- Toggle
 vim.keymap.set("n", "<leader>o", "<c-w>w", {})
 
@@ -15,6 +18,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 --Buffer Delete
 vim.keymap.set("n", "<leader>dd", "<cmd>bd<cr>", { desc = "Delete buffer" })
+vim.keymap.set("n", "<leader>bd", ":ls<cr>:bd ", { desc = "Delete buffer" })
 
 -- Lazy
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Delete buffer" })
@@ -46,3 +50,12 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
 -- vim.keymap.set("n", "<ESC>", ":nohlsearch<CR>", { desc = "clear search highlight" })
 vim.keymap.set("n", "<ESC>", " <Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR> ",
 	{ desc = "clear search highlight" })
+
+-- Buffer | idk  gotta find new way
+vim.keymap.set("n", "<leader>bl", "<cmd>ls<cr>", opts)
+
+-- default find
+vim.keymap.set("n", "<leader>fo", ":find **/", { desc = "Find" })
+
+-- Quick term
+vim.keymap.set("n", "<c-t>", ":!", { desc = "Term" })
