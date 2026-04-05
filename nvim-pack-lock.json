@@ -1,0 +1,16 @@
+{
+  "plugins": {
+    "gruvbox.nvim": {
+      "rev": "9d0e3af224c5492069a493bb43c6ec2b78497454",
+      "src": "https://gitlab.com/motaz-shokry/gruvbox.nvim"
+    },
+    "mason.nvim": {
+      "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
+      "src": "https://github.com/mason-org/mason.nvim"
+    },
+    "nvim-lspconfig": {
+      "rev": "ffd2b00f8dd0ee07bd1252ef3857e28ea3272d56",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    }
+  }
+}

@@ -1,45 +1,55 @@
-local vim = vim
-
--- set number
-vim.o.nu = true
+-- Number
+vim.o.number = true
 vim.o.rnu = true
 
--- Border
-vim.o.winborder = "rounded"
-
--- sign
-vim.o.signcolumn = "yes"
-vim.opt.colorcolumn = "85"
-
-vim.o.wrap = false
-
--- dark | batman
-vim.o.background = "dark"
-
--- no mouse in my table
-vim.o.mouse = ""
-
-vim.o.ignorecase = true
-
-vim.o.clipboard = "unnamedplus"
-
+vim.o.scrolloff = 8
 vim.o.confirm = true
 
-vim.o.scrolloff = 8
+vim.o.path = "**"
+
+-- Casesenstive
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+vim.o.signcolumn = "yes"
+vim.o.colorcolumn = "85"
+
+-- Tab behaviour
+vim.cmd("filetype plugin indent on")
+vim.o.smartindent = true
+vim.o.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+vim.o.autocomplete = true
+vim.cmd([[set completeopt+=menuone,noselect,popup]])
 
 -- Undo
+vim.cmd("packadd nvim.undotree")
+vim.o.backup = false
 vim.o.undofile = true
 vim.o.undolevels = 10000
 vim.o.swapfile = false
+vim.o.breakindent = true
 
--- Auto complete
-vim.cmd [[set completeopt+=fuzzy,menuone,noinsert,popup,preview]]
+vim.o.winborder = "single"
+vim.cmd([[set completeopt+=menuone,noselect,popup]])
 
--- Indent
-vim.o.autoindent = true
+vim.cmd([[
+	autocmd CmdlineChanged [:\/\?] call wildtrigger()
+	set wildmode=noselect:lastused,full
+	set wildoptions=pum ]])
 
--- Netwr
--- vim.g.netrw_browse_split = 0
--- vim.g.netrw_banner = 0
-vim.g.netrw_keepdir = 0
-vim.g.netrw_liststyle = 3
+vim.cmd([[
+	set findfunc=Find
+	func Find(arg, _)
+	  if empty(s:filescache)
+	    let s:filescache = globpath('.', '**', 1, 1)
+	    call filter(s:filescache, '!isdirectory(v:val)')
+	    call map(s:filescache, "fnamemodify(v:val, ':.')")
+	  endif
+	  return a:arg == '' ? s:filescache : matchfuzzy(s:filescache, a:arg)
+	endfunc
+	let s:filescache = []
+	autocmd CmdlineEnter : let s:filescache = [] ]])
