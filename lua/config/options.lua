@@ -7,12 +7,16 @@ vim.o.confirm = true
 
 vim.o.path = "**"
 
+vim.opt.grepprg =
+'rg --vimgrep --no-messages --smart-case'
+
 -- Casesenstive
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
 vim.o.signcolumn = "yes"
 vim.o.colorcolumn = "85"
+vim.o.cursorline = true
 
 -- Tab behaviour
 vim.cmd("filetype plugin indent on")
@@ -23,8 +27,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.o.autocomplete = true
-vim.cmd([[set completeopt+=menuone,noselect,popup]])
-
+vim.o.complete = ".^5,t^3,w"
 -- Undo
 vim.cmd("packadd nvim.undotree")
 vim.o.backup = false
@@ -33,8 +36,13 @@ vim.o.undolevels = 10000
 vim.o.swapfile = false
 vim.o.breakindent = true
 
-vim.o.winborder = "single"
-vim.cmd([[set completeopt+=menuone,noselect,popup]])
+vim.o.winborder = "rounded"
+-- vim.cmd([[set completeopt+=menuone,noselect,popup,fuzzy,noinsert]])
+vim.cmd(
+    [[set completeopt+=menuone,popup,fuzzy,noinsert]])
+vim.o.wildmenu = true
+
+-- vim.o.trim_trailing_whitespace = true
 
 vim.cmd([[
 	autocmd CmdlineChanged [:\/\?] call wildtrigger()
