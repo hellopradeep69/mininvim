@@ -1,6 +1,6 @@
 - Keeping it minimal af
 
-- 5 plugin | KISS
+- 10 plugin | KISS
 ------
 - nvim lsp [x]
 - mason nvim [x]
