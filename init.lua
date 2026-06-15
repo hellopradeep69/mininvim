@@ -26,7 +26,7 @@ vim.o.fillchars = "eob: "
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
-vim.opt.grepprg = "rg --vimgrep --smart-case"
+vim.opt.grepprg = "rg --no-message --vimgrep --smart-case --ignore-case"
 
 -- Indent
 vim.cmd("filetype plugin indent on")
@@ -43,7 +43,7 @@ vim.opt.path:append({ "**" })
 vim.diagnostic.config({ virtual_text = true })
 
 -- KEYMAPS
-vim.keymap.set("n", "<leader>fe", "<cmd>FZF<cr>", {})
+vim.keymap.set("n", "<leader>fe", "q:i:fin ", {})
 vim.keymap.set("n", "<leader>/", ":Ggrep | copen<left><left><left><left><left><left><left>", {})
 vim.keymap.set("n", "<leader>e", "<cmd>Lex<cr>", {})
 
@@ -142,24 +142,6 @@ vim.cmd("colorscheme gruvbox")
 
 require("mason").setup()
 require("mason-lspconfig").setup()
-
--- Auto install this
-local ensure_installed = {
-	"bash-language-server",
-	"black",
-	"lua-language-server",
-	"shfmt",
-	"stylua",
-	"tree-sitter-cli",
-}
-
--- Wrapper to autoinstall
-local installed_package_names = require("mason-registry").get_installed_package_names()
-for _, v in ipairs(ensure_installed) do
-	if not vim.tbl_contains(installed_package_names, v) then
-		vim.cmd(":MasonInstall " .. v)
-	end
-end
 
 vim.diagnostic.config({ virtual_text = true })
 
